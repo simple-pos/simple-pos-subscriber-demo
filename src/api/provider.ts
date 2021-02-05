@@ -1,13 +1,19 @@
-import Web3Modal from "web3modal"
+import Web3Modal, { IProviderOptions } from "web3modal"
+import WalletConnectProvider from "@walletconnect/web3-provider"
 
-const providerOptions = {
-  /* See Provider Options Section */
+const providerOptions: IProviderOptions = {
+  walletconnect: {
+    package: WalletConnectProvider,
+    options: {
+      infuraID: "82b8340f4bd146a2bfc606609ffbec41",
+    },
+  },
 }
 
-const web3Modal = new Web3Modal({ network: "rinkeby", providerOptions })
+const web3Modal = new Web3Modal({ network: "rinkeby" })
 
-const getProvider = async () => {
+export const getProvider = async () => {
   const provider = await web3Modal.connect()
-
+  console.log({ provider })
   return provider
 }
