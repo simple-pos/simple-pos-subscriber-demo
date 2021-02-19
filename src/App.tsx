@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 import { Heading, Text, Button } from "evergreen-ui"
+import { getProvider } from "./api/provider"
 
 const SContainer = styled.main`
   background-color: #f0f0f0;
@@ -25,7 +26,16 @@ function App() {
       <Text marginTop={16} size={500}>
         Let's check 👇
       </Text>
-      <Button type="button" height={40} appearance="primary" marginTop={16}>
+      <Button
+        type="button"
+        height={40}
+        appearance="primary"
+        marginTop={16}
+        onClick={() => {
+          console.log("priz")
+          getProvider()
+        }}
+      >
         Connect a wallet
       </Button>
     </SContainer>
